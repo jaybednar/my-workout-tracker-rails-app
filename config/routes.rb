@@ -1,26 +1,13 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'exercises/index'
-  get 'exercises/show'
-  get 'exercises/new'
-  get 'exercises/create'
-  get 'exercises/edit'
-  get 'exercises/update'
-  get 'exercises/destroy'
-  get 'workouts/index'
-  get 'workouts/show'
-  get 'workouts/new'
-  get 'workouts/create'
-  get 'workouts/edit'
-  get 'workouts/update'
-  get 'workouts/destroy'
-  get 'users/show'
-  get 'users/new'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+ resources :users
+ resources :exercises
+ resources :workouts 
+
+ get '/login', to: 'sessions#new'
+
+ post '/sessions', to: 'sessions#create'
+
+ get '/logout', to: 'sessions#destroy'
+
 end
