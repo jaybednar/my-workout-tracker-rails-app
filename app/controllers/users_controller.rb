@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
+
   def show
   end
 
@@ -16,4 +18,14 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  private 
+
+    def user_params 
+      params.require(:user).permit(:name, :email, :password)
+    end 
+
+    def find_user 
+      @user = User.find_by(id: params[:id])
+    end 
 end
