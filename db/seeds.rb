@@ -3,7 +3,7 @@
 @workout = Workout.create(user_id: @user.id, date: "Friday - 05/11/2018", comments: "Feeling low-energy today but made it to the gym")
 
 
-EXERCISES = {
+EXERCISES = [
 	{name: "Barbell Flat Bench Press", bodypart: "Chest"},
 	{name: "DB Flat Bench Press", bodypart: "Chest"},
 	{name: "Barbell Incline Bench Press", bodypart: "Chest"},
@@ -53,6 +53,40 @@ EXERCISES = {
 	{name: "Chest Supported Smith Row", bodypart: "Back"},
 	{name: "Chest Supported Cable row ", bodypart: "Back"},
 	{name: "Cable row(under) ", bodypart: "Back"},
-}
 
-@exercise = 
+	{name: "Barbell Curls", bodypart: "Arms"},
+	{name: "DB Curls ", bodypart: "Arms"},
+	{name: "Preacher Curls", bodypart: "Arms"},
+	{name: "Reverse Curls ", bodypart: "Arms"},
+	{name: "Hammer Curls ", bodypart: "Arms"},
+	{name: "Cable Curls ", bodypart: "Arms"},
+	{name: "Rope Cable Curls", bodypart: "Arms"},
+	{name: "Pushdowns", bodypart: "Arms"},
+	{name: "Overhead Extensions", bodypart: "Arms"},
+	{name: "Skull Crushers", bodypart: "Arms"},
+	{name: "Close Grip Bench Press", bodypart: "Arms"},
+	{name: "Bench Dips", bodypart: "Arms"},
+
+	{name: "Crunches", bodypart: "Abs"},
+	{name: "Sit-ups", bodypart: "Abs"},
+	{name: "Leg Raises", bodypart: "Abs"},
+	{name: "Ab Rollouts", bodypart: "Abs"},
+
+	{name: "Squat", bodypart: "Legs"},
+	{name: "Leg Press", bodypart: "Legs"},
+	{name: "Extensions", bodypart: "Legs"},
+	{name: "Hack Squat", bodypart: "Legs"},
+	{name: "Lunges", bodypart: "Legs"},
+	{name: "Leg Curls ", bodypart: "Legs"},
+	{name: "Stiff Leg Deadlift", bodypart: "Legs"},
+	{name: "Standing Calf Raises", bodypart: "Legs"},
+	{name: "Seated Calf Raises", bodypart: "Legs"}
+]
+
+EXERCISES.each do |ex_hash|
+	Exercise.create(ex_hash)
+end 
+
+@workout.exercises << Exercise.first(4)
+
+
