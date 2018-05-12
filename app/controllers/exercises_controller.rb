@@ -1,4 +1,7 @@
 class ExercisesController < ApplicationController
+  before_action :find_exercise, only: [:show, :edit, :update, :destroy]
+
+
   def index
   end
 
@@ -19,4 +22,14 @@ class ExercisesController < ApplicationController
 
   def destroy
   end
+
+  private 
+
+    def exercise_params 
+      params.require(:exercise).permit(:name, :bodypart, :sets, :reps)
+    end 
+
+    def find_exercise 
+      @exercise = exercise.find_by(id: params[:id])
+    end 
 end
