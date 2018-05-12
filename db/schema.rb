@@ -12,19 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_05_11_211321) do
 
-  create_table "exercise_workouts", force: :cascade do |t|
-    t.integer "workout_id"
-    t.integer "exercise_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "bodypart"
     t.integer "reps"
     t.integer "sets"
     t.string "url"
+    t.integer "workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_05_11_211321) do
 
   create_table "workouts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "date"
+    t.datetime "date"
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
