@@ -1,2 +1,22 @@
-<h1>Workouts#new</h1>
-<p>Find me in app/views/workouts/new.html.erb</p>
+<% require 'date' %>
+
+<h1>Add A Workout</h1>
+
+
+<%= form_for(@user) do |f| %>
+	<%= f.fields_for @workout do |w| %>
+
+		<div class='form-group <%= 'alert' if flash[:message] || @user.errors[:password].any? %>'>
+			Date:     <%= w.date_select :date %>
+		</div>
+
+		<div class='form-group <%= 'alert' if flash[:message] || @user.errors[:password].any? %>'>
+			Comments: <%= w.text_area :comments, options = {rows:"4", cols:"50", placeholder:"ex. 'Felt great today, best workout ever!' or 'Worked Back & Biceps'"} %>
+		</div>
+
+		<%= w.submit %>
+
+	<% end %>
+
+<% end %>
+  

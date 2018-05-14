@@ -8,6 +8,9 @@ class WorkoutsController < ApplicationController
   end
 
   def new
+    
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.build
   end
 
   def create
