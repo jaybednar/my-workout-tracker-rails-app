@@ -10,3 +10,8 @@ div.alert {
 	border: 1px solid red;
 	font-weight: bold;
 }
+
+li#logout {
+	position: absolute;
+  right: 25px;
+}
