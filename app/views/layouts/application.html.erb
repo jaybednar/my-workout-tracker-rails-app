@@ -18,22 +18,28 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Expand at sm</a>
+        <a class="navbar-brand" href="#">My Workout Tracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExample03">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            
+
+            <% if logged_in? %>
+              <li class="nav-item active">
+              <a class="nav-link" href="<%= user_path(current_user) %>">Home <span class="sr-only">(current)</span></a></li>
+              <li class="nav-item">
+              link_to
             </li>
+            <% else %>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <%= link_to "Sign Up", new_user_path %>
+              <%= link_to "Login", login_path %>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+            <% end %>
+            
             
           </ul>
           
