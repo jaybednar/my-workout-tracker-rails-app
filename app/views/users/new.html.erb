@@ -1,9 +1,14 @@
+<div class="container">
+
 <h1>Create Your Account</h1>
 <%= form_for(@user) do |f| %>
-		<p>Name: <%= f.text_field :name %></p>
-		<p>Email: <%= f.text_field :email %></p>
-		<p>Password: <%= f.password_field :password %></p>
-		<p>Confirm Password: <%= f.password_field :password_confirmation %></p>
-		<p><%= f.submit %></p>
+		<div class='form-group'><h4>Name:</h4> <%= f.text_field :name, class:'form-control' %></div>
+		<div class='form-group'><h4>Email:</h4> <%= f.text_field :email, class:'form-control' %></div>
+		<div class='form-group'><h4>Password:</h4> <%= f.password_field :password, class:'form-control' %></div>
+		<div class='form-group'><h4>Confirm Password:</h4> <%= f.password_field :password_confirmation, class:'form-control' %></div>
+		<div class='form-group'><%= f.submit %></div>
 <% end %>
   
+</div>
+
+
