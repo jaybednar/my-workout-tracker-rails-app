@@ -10,23 +10,26 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if confirm_password 
-        if @user.save
-          session[:user_id] = @user.id 
-          redirect_to user_path(@user)
-        else 
-          render :new
-        end 
+    confirm_password 
+    if @user.save
+      session[:user_id] = @user.id 
+      redirect_to user_path(@user)
     else 
-      flash[:message] = "Passwords do not match."
       render :new
-    end 
+    end  
   end 
 
   def edit
   end
 
   def update
+    confirm_password
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else 
+      render :edit 
+    end 
   end
 
   def destroy
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
   private 
 
     def user_params 
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end 
 
     def find_user 
@@ -43,6 +46,10 @@ class UsersController < ApplicationController
     end 
 
     def confirm_password
-      params[:user][:password] == params[:user][:password_confirmation]
-    end 
+      if params[:user][:password] != params[:user][:password_confirmation]
+        flash[:message] = "Passwords do not match."
+      end
+    end  
+
+ 
 end
