@@ -1,14 +1,16 @@
 class SessionsController < ApplicationController
   def new
-  	@user = User.new
+  	
   end
 
   def create
-  	@user = User.find_by(email: params[:user][:email])
-  	if @user && @user.authenticate(params[:user][:password])
+  	
+  	@user = User.find_by(email: params[:email])
+  	if @user && @user.authenticate(params[:password])
   		session[:user_id] = @user.id 
   		redirect_to user_path(@user)
   	else
+  		login_message
   		render :new  
   	end 
   end
@@ -17,5 +19,16 @@ class SessionsController < ApplicationController
   	session.delete(:user_id)
   	redirect_to root_path 
   end
-  
+
+  private 
+
+  	def login_message 
+  		if params[:email].present? && !@user
+  			flash[:message] = "Email not found."
+  		elsif params[:password].present? && !@user.authenticate(params[:password])
+  			flash[:message] = "Email and password do not match."
+  		else
+  			flash[:message] = "Please fill out all fields."
+  		end 
+  	end 
 end
