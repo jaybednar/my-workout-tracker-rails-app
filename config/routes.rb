@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
- resources :users
+ resources :users do 
+ 	resources :workouts 
+ end 
  resources :exercises
- resources :workouts 
+ 
 
  get '/login', to: 'sessions#new'
 

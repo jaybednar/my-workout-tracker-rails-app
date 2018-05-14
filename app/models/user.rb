@@ -7,4 +7,10 @@ class User < ApplicationRecord
 	validates :name, presence: true
 	validates :email, presence: true, uniqueness: true 
 
+	accepts_nested_attributes_for :workouts
+
+	def workouts_attributes=(workouts_attributes)
+		self.workouts.create(workout_attributes)
+		self.save
+	end 
 end
