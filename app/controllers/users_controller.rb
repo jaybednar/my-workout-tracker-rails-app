@@ -9,7 +9,17 @@ class UsersController < ApplicationController
   end
 
   def create
-  end
+    @user = User.new(user_params)
+    if confirm_password 
+        if @user.save
+          redirect_to user_path(@user)
+        else 
+          render :new
+        end 
+    else 
+      render :new
+    end 
+  end 
 
   def edit
   end
@@ -28,5 +38,9 @@ class UsersController < ApplicationController
 
     def find_user 
       @user = User.find_by(id: params[:id])
+    end 
+
+    def confirm_password
+      params[:user][:password] == params[:user][:password_confirmation]
     end 
 end
