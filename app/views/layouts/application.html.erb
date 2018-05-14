@@ -28,16 +28,26 @@
             
 
             <% if logged_in? %>
+
               <li class="nav-item active">
-              <a class="nav-link" href="<%= user_path(current_user) %>">Home <span class="sr-only">(current)</span></a></li>
+                <%= link_to "Home", user_path(current_user), class:"nav-link" %>
+              </li>
               <li class="nav-item">
-              link_to
-            </li>
+                <%= link_to "My Workouts", user_workouts_path(current_user), class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "See All Exercises", exercises_path, class:"nav-link" %>
+              </li>
+
             <% else %>
-            <li class="nav-item">
-              <%= link_to "Sign Up", new_user_path %>
-              <%= link_to "Login", login_path %>
-            </li>
+
+              <li class="nav-item">
+                <%= link_to "Sign Up", new_user_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", login_path, class:"nav-link" %>
+              </li>
+
             <% end %>
             
             
@@ -45,7 +55,7 @@
           
         </div>
       </nav>
-      
+
       <% if @user %>
         <% if @user.errors.any? %>
           <div class="alert">
