@@ -7,7 +7,7 @@
 
 		<div class='form-group <%= 'alert' if flash[:message] || @user.errors[:password].any? %>'>
 			Date:     <%= w.date_field :date, {value: Date.today} %>
-			Day:     <%= w.text_field :date, {value: Date.today.wday} %>
+			Weekday:     <%= w.text_field :weekday, {value: calc_weekday(Date.today.wday)} %>
 		</div>
 
 		<div class='form-group <%= 'alert' if flash[:message] || @user.errors[:password].any? %>'>
