@@ -46,6 +46,20 @@
         </div>
       </nav>
 
+      <% if @user.errors.any? %>
+        <div class="alert">
+          <% @user.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if flash[:message] %>
+        <div class="alert">
+          <%= flash[:message] %>
+        </div>
+      <% end %>
+
       <%= yield %>
 
     </div>

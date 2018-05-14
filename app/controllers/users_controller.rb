@@ -17,6 +17,7 @@ class UsersController < ApplicationController
           render :new
         end 
     else 
+      flash[:message] = "Passwords do not match."
       render :new
     end 
   end 
