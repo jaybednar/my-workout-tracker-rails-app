@@ -6,3 +6,7 @@ body {
   margin-bottom: 20px;
 }
 
+div.alert {
+	border: 1px solid red;
+	font-weight: bold;
+}
