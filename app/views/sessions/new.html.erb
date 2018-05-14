@@ -1,6 +1,9 @@
 <div class="container">
 
 <h1>Login to Your Account</h1>
+
+<br>
+
 <%= form_tag(sessions_path) do %>
 		
 		<div class='form-group'>
@@ -15,6 +18,8 @@
 		<div class='form-group'>
 			<%= submit_tag "Login" %>
 		</div>
+
+		<h5><%= link_to "Login via Github", '/auth/github' %></h5>
 
 <% end %>
   
