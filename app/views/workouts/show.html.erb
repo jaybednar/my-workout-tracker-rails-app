@@ -19,4 +19,28 @@
 			<% end %>
 
 		
+		<h2>Add an Exercise: </h2>
+
+		<%= form_for(@exercise) do |f| %>
+				
+				<div class="form-group">
+					Exercise Name: <%= f.text_field :name %>
+				</div>
+
+				<div class="form-group">
+					Bodypart worked: <%= f.text_field :bodypart %>
+				</div>
+
+				<div class="form-group">
+					Sets: <%= f.number_field :sets %>
+				</div>
+
+				<div class="form-group">
+					Reps: <%= f.number_field :reps %>
+				</div>
+
+				<%= f.submit "Save Exercise" %>
+				
+		<% end %>
+		  
 </div>	
