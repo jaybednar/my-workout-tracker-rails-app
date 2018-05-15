@@ -1,2 +1,22 @@
-<h1>Workouts#show</h1>
-<p>Find me in app/views/workouts/show.html.erb</p>
+<div class="container">
+
+	<h1><%= "#{@workout.bodypart} - #{@workout.weekday}, #{@workout.date.mon}/#{@workout.date.day}/#{@workout.date.year}" %></h1>
+
+	<br>
+
+	<h3>Comments: <%= @workout.comments %></h3>
+
+	<br>
+
+	<h2>Exercises:</h2>
+		
+			<% @workout.exercises.each.with_index(1) do |exercise, i| %>
+
+				 <h5><strong> <%=  "#{i}. #{exercise.name}" %>	</strong> </h5>
+				 			<p> 	Sets: <%= exercise.sets %> </p>
+						 	<p>	  Reps: <%= exercise.reps %> </p>
+
+			<% end %>
+
+		
+</div>	
