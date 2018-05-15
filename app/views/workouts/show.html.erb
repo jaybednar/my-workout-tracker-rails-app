@@ -30,26 +30,6 @@
 
 <h2>Add an Exercise: </h2>
 
-<%= form_for(@exercise) do |f| %>
-		
-		<div class="form-group">
-			Exercise Name: <%= f.text_field :name, class:'form-control' %>
-		</div>
-
-		<div class="form-group">
-			Bodypart worked: <%= f.text_field :bodypart, class:'form-control' %>
-		</div>
-
-		<div class="form-group">
-			Sets: <%= f.number_field :sets, class:'form-control' %>
-		</div>
-
-		<div class="form-group">
-			Reps: <%= f.number_field :reps, class:'form-control' %>
-		</div>
-		<%= f.hidden_field :workout_id, value:@workout.id %>
-		<%= f.submit "Add to Workout" %>
-		
-<% end %>
+<%= render partial:'exercises/form', locals:{exercise: @exercise, workout: @workout} %>
 		  
 </div>	

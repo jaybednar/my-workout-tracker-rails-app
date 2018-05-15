@@ -12,7 +12,6 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @workout = Workout.find(params[:exercise][:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
     @exercise.save 
@@ -21,12 +20,27 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    if exercise_user? 
+      render :edit 
+    else 
+      flash[:message] = "You may only edit your exercises."
+      redirect_to user_path(current_user)
+    end 
   end
 
   def update
   end
 
   def destroy
+    @workout = @exercise.workout
+    if exercise_user? 
+      @exercise.destroy
+      @workout.save 
+      redirect_to user_workout_path(@workout.user, @workout)
+    else 
+      flash[:message] = "You may only delete your exercises."
+      redirect_to user_path(current_user)
+    end 
   end
 
   private 
@@ -36,6 +50,10 @@ class ExercisesController < ApplicationController
     end 
 
     def find_exercise 
-      @exercise = exercise.find_by(id: params[:id])
+      @exercise = Exercise.find_by(id: params[:id])
+    end 
+
+    def exercise_user?
+      current_user == @exercise.workout.user 
     end 
 end
