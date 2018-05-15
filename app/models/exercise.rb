@@ -8,4 +8,12 @@ class Exercise < ApplicationRecord
   	@exercises = self.where(bodypart: bodypart).uniq
   end 
 
+  def self.unique_bodyparts
+  	unique = []
+  	self.all.each do |ex|
+  		unique << ex unless unique.any?{|exercise| ex.bodypart == exercise.bodypart}
+  	end 
+  	unique 
+  end
+
 end

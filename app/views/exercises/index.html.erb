@@ -4,7 +4,7 @@
 Filter by Bodypart: 
 
 <%= form_tag(exercises_filter_path) do  %>
- 		<%= collection_select :exercise, :bodypart, Exercise.all.uniq, :bodypart, :bodypart %>	
+ 		<%= collection_select :exercise, :bodypart, Exercise.unique_bodyparts, :bodypart, :bodypart  %>	
  		<%= submit_tag "Filter Exercises" %>
  <% end %>
     

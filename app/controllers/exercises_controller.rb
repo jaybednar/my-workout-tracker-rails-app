@@ -7,6 +7,7 @@ class ExercisesController < ApplicationController
   end
 
   def filter
+    @bodyparts = Exercise.unique_bodyparts
     @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
     render :index
   end 
