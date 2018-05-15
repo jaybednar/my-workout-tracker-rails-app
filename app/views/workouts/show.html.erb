@@ -12,10 +12,10 @@
 		
 			<% @workout.exercises.each.with_index(1) do |exercise, i| %>
 
-				 <h5><strong> <%=  "#{i}. #{exercise.name}" %>	</strong> </h5>
-				 			<p> 	Sets: <%= exercise.sets %> </p>
-						 	<p>	  Reps: <%= exercise.reps %> </p>
-
+				 <h5><strong> <%=  "#{i}. #{exercise.name}" unless exercise.nil?%>	</strong> </h5>
+				 			<p> 	Sets: <%= exercise.sets unless exercise.nil?%> </p>
+						 	<p>	  Reps: <%= exercise.reps unless exercise.nil?%> </p>
+						 
 			<% end %>
 
 		<br><br><br>

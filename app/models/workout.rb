@@ -5,4 +5,9 @@ class Workout < ApplicationRecord
 
 	accepts_nested_attributes_for :exercises 
 
+	validates :date, presence: true 
+	validates :weekday, presence: true 
+	validates :bodypart, presence: true 
+
+
 end

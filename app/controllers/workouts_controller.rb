@@ -7,7 +7,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercise = @workout.exercises.build
+    @exercise = Exercise.new
   end
 
   def new
@@ -16,7 +16,14 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    # raise params.inspect
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.build(workout_params)
+    if @workout.save 
+      redirect_to user_workout_path(@user, @workout)
+    else 
+      render :new 
+    end 
   end
 
   def edit
@@ -32,7 +39,7 @@ class WorkoutsController < ApplicationController
  private 
 
     def workout_params 
-      params.require(:workout).permit(:date, :comments)
+      params.require(:workout).permit(:date, :weekday, :bodypart, :comments)
     end 
 
     def find_workout 

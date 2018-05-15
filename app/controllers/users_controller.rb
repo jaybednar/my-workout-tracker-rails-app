@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   private 
 
     def user_params 
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, workouts_attributes: [:date, :weekday, :bodypart, :comments])
     end 
 
     def find_user 
