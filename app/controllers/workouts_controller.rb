@@ -27,7 +27,6 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
-    
     @user = User.find(params[:user_id])
     @workout = @user.workouts.find(params[:id])
     if @workout
@@ -39,6 +38,11 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    if @workout.update(workout_params)
+      redirect_to user_workout_path(@workout.user, @workout)
+    else 
+      render :edit 
+    end 
   end
 
   def destroy
