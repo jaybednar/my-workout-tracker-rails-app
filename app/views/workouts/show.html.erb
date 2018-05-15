@@ -10,38 +10,46 @@
 
 	<h2>Exercises:</h2>
 		
-			<% @workout.exercises.each.with_index(1) do |exercise, i| %>
+	<% @workout.exercises.each.with_index(1) do |exercise, i| %>
 
-				 <h5><strong> <%=  "#{i}. #{exercise.name}" unless exercise.nil?%>	</strong> </h5>
-				 			<p> 	Sets: <%= exercise.sets unless exercise.nil?%> </p>
-						 	<p>	  Reps: <%= exercise.reps unless exercise.nil?%> </p>
-						 
-			<% end %>
+		 <h5><strong> <%=  link_to "#{i}. #{exercise.name}", edit_exercise_path(exercise) %>	</strong> </h5>
+	 			<p> 	Sets: <%= exercise.sets unless exercise.nil?%> </p>
+			 	<p>	  Reps: <%= exercise.reps unless exercise.nil?%> </p>
+				 
+	<% end %>
 
-		<br><br><br>
 
-		<h2>Add an Exercise: </h2>
 
-		<%= form_for(@exercise) do |f| %>
-				
-				<div class="form-group">
-					Exercise Name: <%= f.text_field :name, class:'form-control' %>
-				</div>
+	<p>*** click Exercise name to edit. ***</p>
 
-				<div class="form-group">
-					Bodypart worked: <%= f.text_field :bodypart, class:'form-control' %>
-				</div>
 
-				<div class="form-group">
-					Sets: <%= f.number_field :sets, class:'form-control' %>
-				</div>
 
-				<div class="form-group">
-					Reps: <%= f.number_field :reps, class:'form-control' %>
-				</div>
-				<%= f.hidden_field :workout_id, value:@workout.id %>
-				<%= f.submit "Add to Workout" %>
-				
-		<% end %>
+<%= link_to "Edit Workout", edit_user_workout_path(@workout.user, @workout) %>
+
+<br><br><br>
+
+<h2>Add an Exercise: </h2>
+
+<%= form_for(@exercise) do |f| %>
+		
+		<div class="form-group">
+			Exercise Name: <%= f.text_field :name, class:'form-control' %>
+		</div>
+
+		<div class="form-group">
+			Bodypart worked: <%= f.text_field :bodypart, class:'form-control' %>
+		</div>
+
+		<div class="form-group">
+			Sets: <%= f.number_field :sets, class:'form-control' %>
+		</div>
+
+		<div class="form-group">
+			Reps: <%= f.number_field :reps, class:'form-control' %>
+		</div>
+		<%= f.hidden_field :workout_id, value:@workout.id %>
+		<%= f.submit "Add to Workout" %>
+		
+<% end %>
 		  
 </div>	

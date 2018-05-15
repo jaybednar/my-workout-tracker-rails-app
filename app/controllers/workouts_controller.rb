@@ -27,6 +27,15 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.find(params[:id])
+    if @workout
+      render :edit
+    else 
+      flash[:message] = "You may only edit your workouts."
+      redirect_to user_path(@user)
+    end 
   end
 
   def update
