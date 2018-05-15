@@ -7,7 +7,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    
+    @exercise = @workout.exercises.build
   end
 
   def new
