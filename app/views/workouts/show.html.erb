@@ -38,7 +38,7 @@
 				<div class="form-group">
 					Reps: <%= f.number_field :reps %>
 				</div>
-
+				<%= f.hidden_field :workout_id, value:@workout.id %>
 				<%= f.submit "Save Exercise" %>
 				
 		<% end %>
