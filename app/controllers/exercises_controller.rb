@@ -3,7 +3,13 @@ class ExercisesController < ApplicationController
 
 
   def index
+    @exercises ||= Exercise.all.uniq
   end
+
+  def filter
+    @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
+    render :index
+  end 
 
   def show
   end

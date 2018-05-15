@@ -1,2 +1,19 @@
-<h1>Exercises#index</h1>
-<p>Find me in app/views/exercises/index.html.erb</p>
+<h1>All Exercises</h1>
+
+
+Filter by Bodypart: 
+
+<%= form_tag(exercises_filter_path) do  %>
+ 		<%= collection_select :exercise, :bodypart, Exercise.all.uniq, :bodypart, :bodypart %>	
+ 		<%= submit_tag "Filter Exercises" %>
+ <% end %>
+    
+
+
+
+
+<% @exercises.each do |exercise| %>
+
+	<h3><%= exercise.name %></h3>
+
+<% end %>

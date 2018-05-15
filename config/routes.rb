@@ -5,7 +5,8 @@ Rails.application.routes.draw do
  end 
  resources :exercises
  
-
+ post '/exercises/filter', to: 'exercises#filter'
+ 
  get '/login', to: 'sessions#new'
 
  post '/sessions', to: 'sessions#create'
