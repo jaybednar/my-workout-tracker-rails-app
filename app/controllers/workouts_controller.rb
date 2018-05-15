@@ -2,9 +2,12 @@ class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = User.find(params[:user_id])
+    @workouts = @user.workouts
   end
 
   def show
+    
   end
 
   def new
@@ -33,6 +36,6 @@ class WorkoutsController < ApplicationController
     end 
 
     def find_workout 
-      @workout = workout.find_by(id: params[:id])
+      @workout = Workout.find_by(id: params[:id])
     end 
 end

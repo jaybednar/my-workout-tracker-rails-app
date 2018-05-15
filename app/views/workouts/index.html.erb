@@ -1,2 +1,11 @@
-<h1>Workouts#index</h1>
-<p>Find me in app/views/workouts/index.html.erb</p>
+<div class="container">
+
+<h1>My Workouts</h1>
+
+	<% @workouts.each do |workout| %>
+
+		<%= link_to "#{workout.bodypart} - #{workout.weekday}", user_workout_path(@user, workout) %>
+
+	<% end %>
+
+</div>	
