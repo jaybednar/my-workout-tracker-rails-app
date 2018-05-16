@@ -3,14 +3,12 @@ class ExercisesController < ApplicationController
 
 
   def index
-    @exercises ||= Exercise.all.uniq
+    if params[:exercise]
+      @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart]) 
+    else
+      @exercises = Exercise.all.uniq
+    end 
   end
-
-  def filter
-    @bodyparts = Exercise.unique_bodyparts
-    @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
-    render :index
-  end 
 
   def show
   end

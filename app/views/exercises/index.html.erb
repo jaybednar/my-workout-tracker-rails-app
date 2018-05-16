@@ -1,19 +1,28 @@
-<h1>All Exercises</h1>
+
 
 
 Filter by Bodypart: 
 
-<%= form_tag(exercises_filter_path) do  %>
+<%= form_tag(exercises_path, method: :get) do  %>
  		<%= collection_select :exercise, :bodypart, Exercise.unique_bodyparts, :bodypart, :bodypart  %>	
  		<%= submit_tag "Filter Exercises" %>
  <% end %>
-    
 
+ <br><br>   
 
+<% if params[:exercise].nil? %>
+	<h1>All Exercises:</h1>
+<% else %>	
+	<h1><%= "#{params[:exercise][:bodypart]} Exercises:" %></h1>
+<% end %>
 
+<br><br>
 
+<div class="info">
 <% @exercises.each do |exercise| %>
 
-	<h3><%= exercise.name %></h3>
+	<h5><%= exercise.name %></h5>
 
 <% end %>
+
+</div>
