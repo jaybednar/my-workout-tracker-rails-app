@@ -18,7 +18,6 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    # raise params.inspect
     @exercise ||= Exercise.new
     @workout = Workout.find(params[:workout_id])
   end
