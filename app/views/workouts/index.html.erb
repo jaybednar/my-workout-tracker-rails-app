@@ -4,7 +4,7 @@
 
 	<% @workouts.each do |workout| %>
 
-		<%= link_to "#{workout.bodypart} - #{workout.weekday}", user_workout_path(@user, workout) %>
+		<h4><%= link_to "#{workout.bodypart} - #{workout.weekday}, #{workout.date_formatted}", user_workout_path(@user, workout) %></h4>
 
 	<% end %>
 

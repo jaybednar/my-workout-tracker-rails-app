@@ -9,5 +9,8 @@ class Workout < ApplicationRecord
 	validates :weekday, presence: true 
 	validates :bodypart, presence: true 
 
+	def date_formatted
+		self.date.strftime('%b %d, %Y')
+	end 
 
 end
