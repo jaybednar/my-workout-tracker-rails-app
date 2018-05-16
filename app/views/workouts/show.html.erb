@@ -32,4 +32,9 @@
 
 <%= render partial:'exercises/form', locals:{exercise: @exercise, workout: @workout} %>
 		  
+
+<%= form_tag(user_workout_path(@workout.user, @workout),method: :delete) do %>
+		<%= submit_tag "Delete This Workout" %>
+<% end %>
+
 </div>	

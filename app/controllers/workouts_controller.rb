@@ -46,6 +46,15 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
+    @workout = @user.workouts.find(params[:id])
+    if @workout
+      @workout.destroy 
+      @user.save
+    else 
+      flash[:message] = "You may only delete your workouts."
+    end  
+    redirect_to user_path(@user)
   end
 
 
