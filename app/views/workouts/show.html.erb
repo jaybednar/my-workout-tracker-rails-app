@@ -24,14 +24,22 @@
 
 
 
-<%= link_to "Edit Workout", edit_user_workout_path(@workout.user, @workout) %>
+<%#= link_to "Edit Workout", edit_user_workout_path(@workout.user, @workout) %>
 
 <br><br><br>
 
-<h2>Add an Exercise: </h2>
+<%= form_tag(new_exercise_path, method: :get) do %>
+	<%= hidden_field_tag :workout_id, @workout.id%>
+	<%= submit_tag "Add an Exercise" %>
+<% end %>		  
 
-<%= render partial:'exercises/form', locals:{exercise: @exercise, workout: @workout} %>
-		  
+<br>
+
+<%= form_tag(edit_user_workout_path(@workout.user, @workout), method: :get) do %>
+	<%= submit_tag "Edit Workout" %>
+<% end %>
+
+<br>
 
 <%= form_tag(user_workout_path(@workout.user, @workout),method: :delete) do %>
 		<%= submit_tag "Delete This Workout" %>

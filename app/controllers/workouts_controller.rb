@@ -7,7 +7,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercise = Exercise.new
+    @exercise ||= Exercise.new
   end
 
   def new

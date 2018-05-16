@@ -18,14 +18,21 @@ class ExercisesController < ApplicationController
   end
 
   def new
+    # raise params.inspect
+    @exercise ||= Exercise.new
+    @workout = Workout.find(params[:workout_id])
   end
 
   def create
+   
     @workout = Workout.find(params[:exercise][:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
-    @exercise.save 
-      
-    redirect_to user_workout_path(@workout.user.id, @workout)
+    if @exercise.save
+      @exercise = Exercise.new 
+      redirect_to user_workout_path(@workout.user.id, @workout)
+    else 
+      render :new
+    end 
   end
 
   def edit
