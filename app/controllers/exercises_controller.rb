@@ -3,8 +3,12 @@ class ExercisesController < ApplicationController
 
 
   def index
+    
     if params[:exercise]
       @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart]) 
+    elsif params[:user_id]
+      @user = User.find(params[:user_id])
+      @exercises = @user.exercises 
     else
       @exercises = Exercise.all.uniq
     end 

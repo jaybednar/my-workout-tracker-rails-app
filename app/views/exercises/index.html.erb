@@ -8,6 +8,13 @@ Filter by Bodypart:
  		<%= submit_tag "Filter Exercises" %>
  <% end %>
 
+<br>
+
+ <%= form_tag(exercises_path, method: :get) do %>
+ 		<%= hidden_field_tag :user_id, current_user.id %>
+ 		<%= submit_tag "Show My Exercises" %>
+ <% end %>
+
  <br><br>   
 
 <% if params[:exercise].nil? %>
