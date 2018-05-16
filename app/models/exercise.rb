@@ -5,8 +5,7 @@ class Exercise < ApplicationRecord
 
   validates :name, presence: true
   validates :bodypart, presence: true 
-  validates :sets, presence: true
-  validates :reps, presence: true 
+
 
   def self.filter_by_bodypart(bodypart)
   	if bodypart == "All"

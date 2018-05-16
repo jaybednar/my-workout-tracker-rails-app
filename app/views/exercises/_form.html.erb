@@ -1,19 +1,23 @@
 
  
+Filter by Bodypart: 
 
+		<%= form_tag(new_exercise_path, method: :get) do  %>
+		 		<%= collection_select :exercise, :bodypart, Exercise.unique_bodyparts, :bodypart, :bodypart  %>	
+		 		<%= hidden_field_tag :workout_id, workout.id %>
+		 		<%= submit_tag "Filter Exercises" %>
+		 <% end %>
+
+<br>
 <%= form_for(exercise) do |f| %>
-		
-		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:name].any? %>">
-			Exercise Name: <%= f.text_field :name, class:'form-control' %>
-		</div>
 
 		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:name].any? %>">
-			Exercise Name: <%= collection_select :exercise, :name, Exercise.all.uniq, :name, :name, class:'form-control' %>
+			Exercise Name: <%= collection_select :exercise, :name, @exercises, :name, :name, class:'form-control' %>
 		</div>
 
-		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:bodypart].any? %>">
-			Bodypart worked: <%= collection_select :exercise, :bodypart, Exercise.unique_bodyparts, :bodypart, :bodypart, class:'form-control' %>
-		</div>
+		<!-- <div class="form-group <%#= 'alert' if flash[:message] || exercise.errors[:bodypart].any? %>">
+			Bodypart worked: <%#= collection_select :exercise, :bodypart, Exercise.unique_bodyparts, :bodypart, :bodypart, class:'form-control' %>
+		</div> -->
 
 		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:sets].any? %>">
 			Sets: <%= f.number_field :sets, class:'form-control' %>

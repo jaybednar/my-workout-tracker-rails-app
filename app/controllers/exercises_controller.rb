@@ -3,7 +3,6 @@ class ExercisesController < ApplicationController
 
 
   def index
-    
     if params[:exercise]
       @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart]) 
     elsif params[:user_id]
@@ -19,11 +18,16 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise ||= Exercise.new
+    if params[:exercise]
+      @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
+    else
+      @exercises ||= Exercise.all
+    end 
     @workout = Workout.find(params[:workout_id])
   end
 
   def create
-   
+   r
     @workout = Workout.find(params[:exercise][:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
     if @exercise.save

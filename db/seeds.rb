@@ -4,7 +4,7 @@
 
 
 EXERCISES = [
-	{bodypart: "All", workout_id: @workout.id},
+	{name: "All", bodypart: "All"},
 	{name: "Barbell Flat Bench Press", bodypart: "Chest"},
 	{name: "DB Flat Bench Press", bodypart: "Chest"},
 	{name: "Barbell Incline Bench Press", bodypart: "Chest"},
@@ -85,11 +85,11 @@ EXERCISES = [
 ]
 
 EXERCISES.each do |ex_hash|
-	ex = @workout.exercises.build(ex_hash)
-	@workout.save
+	ex = @workout.exercises.build(ex_hash)q
 end 
 
+@workout.save
 
-
+@user.save
 
 
