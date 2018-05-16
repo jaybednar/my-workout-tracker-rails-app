@@ -5,7 +5,11 @@ class Exercise < ApplicationRecord
 
 
   def self.filter_by_bodypart(bodypart)
-  	@exercises = self.where(bodypart: bodypart).uniq
+  	if bodypart == "All"
+  		@exercises = Exercise.all.uniq 
+  	else 
+  		@exercises = self.where(bodypart: bodypart).uniq
+  	end 
   end 
 
   def self.unique_bodyparts

@@ -4,6 +4,7 @@
 
 
 EXERCISES = [
+	{bodypart: "All", workout_id: @workout.id},
 	{name: "Barbell Flat Bench Press", bodypart: "Chest"},
 	{name: "DB Flat Bench Press", bodypart: "Chest"},
 	{name: "Barbell Incline Bench Press", bodypart: "Chest"},
