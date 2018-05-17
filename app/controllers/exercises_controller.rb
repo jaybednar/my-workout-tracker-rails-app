@@ -27,7 +27,7 @@ class ExercisesController < ApplicationController
   end
 
   def create
-   r
+   # raise params.inspect
     @workout = Workout.find(params[:exercise][:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
     if @exercise.save
