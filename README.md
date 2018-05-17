@@ -1,24 +1,19 @@
-# README
+My Workout Tracker is a simple Rails app that allows you to keep track of your workouts complete with date, weekday, notes, and all the exercises, sets and reps you completed.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To use, clone the repository, cd into, and run the following commands: 
 
-Things you may want to cover:
+		rake db:migrate
 
-* Ruby version
+		rake db:seed 
 
-* System dependencies
+		thin start -ssl 
 
-* Configuration
+Then navigate to https://localhost:3000/   
 
-* Database creation
+		(if given a security warning, select 'advanced' and select 'proceed to localhost')
 
-* Database initialization
+Then click 'Sign Up'
 
-* How to run the test suite
+And Enjoy!!!
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<p data-visibility='hidden'>View <a href='https://github.com/jaybednar/my-workout-tracker-rails-app' title='My Workout Tracker Rails App'>My Workout Tracker</a> on Github.</p>
