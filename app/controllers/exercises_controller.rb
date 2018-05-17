@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :find_exercise, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in
+  before_action :authentication_required
 
   def index
     if params[:exercise]

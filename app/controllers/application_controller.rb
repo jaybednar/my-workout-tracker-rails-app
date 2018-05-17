@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 	include ApplicationHelper
 
-	def redirect_if_not_logged_in
+	def authentication_required
 		if !logged_in?
 			flash[:message] = "You must be logged in to view that page."
 			redirect_to root_path 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 		end 
 	end 
 
-	def redirect_if_not_object_owner
+	def authorization_required
 		if !(current_user == User.find(params[:user_id]))
 			flash[:message] = "You may not view another User's account."
 			redirect_to user_path(current_user)

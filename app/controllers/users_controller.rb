@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in, except: [:new, :create]
+  before_action :authentication_required, except: [:new, :create]
   before_action :redirect_if_not_current_user, except: [:new, :create]
 
   def show
