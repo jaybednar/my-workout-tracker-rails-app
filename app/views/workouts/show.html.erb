@@ -9,12 +9,14 @@
 	<br>
 
 	<h2>Exercises:</h2>
-		
+	
+	<br>
+
 	<% @workout.exercises.each.with_index(1) do |exercise, i| %>
 
 		 <h5><strong> <%=  link_to "#{i}. #{exercise.name}", edit_exercise_path(exercise) %>	</strong> </h5>
-	 			<p> 	Sets: <%= exercise.sets unless exercise.nil?%> </p>
-			 	<p>	  Reps: <%= exercise.reps unless exercise.nil?%> </p>
+	 			<p class="indent"> 	Sets: <%= exercise.sets unless exercise.nil?%> </p>
+			 	<p class="indent">	  Reps: <%= exercise.reps unless exercise.nil?%> </p>
 				 
 	<% end %>
 
