@@ -16,11 +16,7 @@ class Exercise < ApplicationRecord
   end 
 
   def self.unique_bodyparts
-  	unique = []
-  	self.all.each do |ex|
-  		unique << ex unless unique.any?{|exercise| ex.bodypart == exercise.bodypart}
-  	end 
-  	unique 
+    Exercise.select('DISTINCT bodypart')
   end
 
 end
