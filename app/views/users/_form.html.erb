@@ -1,12 +1,38 @@
 <div class="container">
 
-
-<%= form_for(user) do |f| %>
-		<div class='form-group <%= 'alert' if user.errors[:name].any? %>'><h4>Name:</h4> <%= f.text_field :name, class:'form-control' %></div>
-		<div class='form-group <%= 'alert' if user.errors[:email].any? %>'><h4>Email:</h4> <%= f.email_field :email, class:'form-control' %></div>
-		<div class='form-group <%= 'alert' if flash[:message] || user.errors[:password].any? %>'><h4>Password:</h4> <%= f.password_field :password, class:'form-control' %></div>
-		<div class='form-group <%= 'alert' if flash[:message] || user.errors[:password].any? %>'><h4>Confirm Password:</h4> <%= f.password_field :password_confirmation, class:'form-control' %></div>
-		<div class='form-group'><%= f.submit %></div>
+	<% if user.errors.any? %>
+  <div class="alert">
+    <h5>There were some errors:</h5>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+
+	<%= form_for(user) do |f| %>
+			<div class="form-group "><h4>Name:</h4> <%= f.text_field :name, class:'form-control' %>
+			</div>
+
+			<div class="form-group"><h4>Email:</h4> <%= f.email_field :email, class:'form-control' %>
+			</div>
+
+			<div class="form-group"><h4>Password:</h4> <%= f.password_field :password, class:'form-control' %>
+			</div>
+
+			<div class="form-group"><h4>Confirm Password:</h4> <%= f.password_field :password_confirmation, class:'form-control' %>
+			</div>
+
+			<div class='form-group'><%= f.submit %></div>
+	<% end %>
   
 </div>
+
+
+
+
+
+<!-- #= 'alert' if user.errors[:name].any? -->
+
+<!-- 'form-group <%#= 'alert' if flash[:message] || user.errors[:password].any? %>' -->

@@ -62,26 +62,6 @@
         </div>
       </nav>
 
-      <% if @user %>
-        <% if @user.errors.any? %>
-          <div class="alert">
-            <% @user.errors.full_messages.each do |message| %>
-              <%= message %><br>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-
-      <% if @workout %>
-        <% if @workout.errors.any? %>
-          <div class="alert">
-            <% @workout.errors.full_messages.each do |message| %>
-              <%= message %><br>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-
       <% if @exercise %>
         <% if @exercise.errors.any? %>
           <div class="alert">

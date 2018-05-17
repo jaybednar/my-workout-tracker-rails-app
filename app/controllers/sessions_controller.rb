@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
   	def login_message 
   		if params[:email].present? && !@user
   			flash[:message] = "Email not found."
-  		elsif params[:password].present? && !@user.authenticate(params[:password])
+  		elsif !@user.authenticate(params[:password])
   			flash[:message] = "Email and password do not match."
   		else
   			flash[:message] = "Please fill out all fields."
