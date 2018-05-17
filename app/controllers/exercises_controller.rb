@@ -45,6 +45,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
+    if @exercise.update(exercise_params)
+      redirect_to user_workout_path(@exercise.workout.user, @exercise.workout)
+    else 
+      render :edit
+    end 
   end
 
   def destroy
