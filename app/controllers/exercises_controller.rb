@@ -30,6 +30,7 @@ class ExercisesController < ApplicationController
       @exercise = Exercise.new 
       redirect_to user_workout_path(@workout.user.id, @workout)
     else 
+      set_exercises
       render :new
     end 
   end

@@ -9,6 +9,19 @@ Filter by Bodypart:
 		 <% end %>
 
 <br>
+
+<% if exercise.errors.any?  %>
+	  <div class="alert">
+	    <h5>There were some errors:</h5>
+	    <ul>
+	      <% exercise.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+	<br>
 <%= form_for(exercise) do |f| %>
 
 		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:name].any? %>">
