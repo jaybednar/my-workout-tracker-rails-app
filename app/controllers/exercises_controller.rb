@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :find_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in
 
 
   def index
@@ -18,11 +19,7 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise ||= Exercise.new
-    if params[:exercise]
-      @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
-    else
-      @exercises ||= Exercise.all
-    end 
+    set_exercises
     @workout = Workout.find(params[:workout_id])
   end
 
@@ -40,6 +37,7 @@ class ExercisesController < ApplicationController
 
   def edit
     if exercise_user? 
+      set_exercises
       render :edit 
     else 
       flash[:message] = "You may only edit your exercises."
@@ -75,4 +73,13 @@ class ExercisesController < ApplicationController
     def exercise_user?
       current_user == @exercise.workout.user 
     end 
+
+    def set_exercises 
+      if params[:exercise]
+        @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
+      else
+        @exercises ||= Exercise.all
+      end
+    end 
+
 end

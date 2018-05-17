@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in
 
   def index
     @user = User.find(params[:user_id])
@@ -16,7 +17,6 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @user = User.find(params[:user_id])
     @workout = @user.workouts.build(workout_params)
     if @workout.save 
