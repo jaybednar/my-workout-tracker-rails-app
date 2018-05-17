@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in, except: [:new, :create]
+  before_action :redirect_if_not_current_user, except: [:new, :create]
 
   def show
+    
   end
 
   def new
@@ -34,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    no_route_redirect
   end
 
   private 

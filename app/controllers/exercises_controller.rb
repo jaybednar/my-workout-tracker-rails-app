@@ -2,7 +2,6 @@ class ExercisesController < ApplicationController
   before_action :find_exercise, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in
 
-
   def index
     if params[:exercise]
       @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart]) 
@@ -15,6 +14,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    no_route_redirect
   end
 
   def new
@@ -24,7 +24,6 @@ class ExercisesController < ApplicationController
   end
 
   def create
-   # raise params.inspect
     @workout = Workout.find(params[:exercise][:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
     if @exercise.save

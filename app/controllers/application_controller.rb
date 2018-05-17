@@ -8,6 +8,23 @@ class ApplicationController < ActionController::Base
 		end 
 	end 
 
+	def redirect_if_not_current_user 
+		if !(current_user == User.find(params[:id]))
+			flash[:message] = "You may not view another User's account."
+			redirect_to user_path(current_user)
+		end 
+	end 
 
+	def redirect_if_not_object_owner
+		if !(current_user == User.find(params[:user_id]))
+			flash[:message] = "You may not view another User's account."
+			redirect_to user_path(current_user)
+		end 
+	end 
+
+	def no_route_redirect
+		flash[:message] = "That page does not exist."
+		redirect_to user_path(current_user)
+	end 
 	
 end

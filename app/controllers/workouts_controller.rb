@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_object_owner
 
   def index
     @user = User.find(params[:user_id])
@@ -67,4 +68,8 @@ class WorkoutsController < ApplicationController
     def find_workout 
       @workout = Workout.find_by(id: params[:id])
     end 
+
+    def workout_user?
+      current_user == @workout.user
+    end
 end
