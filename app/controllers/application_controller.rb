@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	end 
 
 	def current_user 
-		user ||= User.find_by_id(id: session[:user_id])
+		@user ||= User.find_by_id(id: session[:user_id])
 	end 
 
 	def authentication_required
