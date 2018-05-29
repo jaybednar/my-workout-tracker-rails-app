@@ -9,7 +9,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercise ||= Exercise.new
+    
   end
 
   def new
@@ -18,9 +18,12 @@ class WorkoutsController < ApplicationController
   end
 
   def create
+
     @user = User.find(params[:user_id])
     @workout = @user.workouts.build(workout_params)
+
     if @workout.save 
+      @workout.exercises.destroy_all
       redirect_to user_workout_path(@user, @workout)
     else 
       render :new 
@@ -50,7 +53,7 @@ class WorkoutsController < ApplicationController
     @user = current_user
     @workout = @user.workouts.find(params[:id])
     if @workout
-      @workout.destroy 
+      @workout.destroy
       @user.save
     else 
       flash[:message] = "You may only delete your workouts."
