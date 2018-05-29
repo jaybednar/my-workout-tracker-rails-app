@@ -82,7 +82,7 @@ class ExercisesController < ApplicationController
     def set_exercises 
       if params[:exercise]
         @exercises = Exercise.filter_by_bodypart(params[:exercise][:bodypart])
-        @bodyparts = @exercises
+        @bodyparts = @exercises.slice(0,1)
       else
         @exercises ||= Exercise.all
         @bodyparts = Exercise.unique_bodyparts
