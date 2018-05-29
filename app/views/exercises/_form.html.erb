@@ -29,7 +29,7 @@ Filter by Bodypart:
 		</div>
 
 	 	<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:bodypart].any? %>">
-			Bodypart worked: <%= collection_select :exercise, :bodypart, @exercises, :bodypart, :bodypart, class:'form-control' %>
+			Bodypart worked: <%= collection_select :exercise, :bodypart, @bodyparts, :bodypart, :bodypart, class:'form-control' %>
 		</div> 
 
 		<div class="form-group <%= 'alert' if flash[:message] || exercise.errors[:sets].any? %>">
