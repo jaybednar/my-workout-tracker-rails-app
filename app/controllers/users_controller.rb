@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :redirect_if_not_current_user, except: [:new, :create]
 
   def show
+
   end
 
   def new
