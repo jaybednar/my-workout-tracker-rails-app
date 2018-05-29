@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
-	include ApplicationHelper
+	helper_method :current_user, :logged_in?
+
+	def logged_in?
+		!!current_user
+	end 
+
+	def current_user 
+		user ||= User.find_by_id(id: session[:user_id])
+	end 
 
 	def authentication_required
 		if !logged_in?
