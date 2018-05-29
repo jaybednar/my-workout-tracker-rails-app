@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :redirect_if_not_current_user, except: [:new, :create]
 
   def show
-    
   end
 
   def new
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # confirm_password 
     if @user.save
       session[:user_id] = @user.id 
       redirect_to user_path(@user)
@@ -26,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # confirm_password
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user)
@@ -48,12 +45,6 @@ class UsersController < ApplicationController
     def find_user 
       @user = User.find_by(id: params[:id])
     end 
-
-    # def confirm_password
-    #   if params[:user][:password] != params[:user][:password_confirmation]
-    #     flash[:message] = "Passwords do not match."
-    #   end
-    # end  
 
  
 end

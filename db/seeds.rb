@@ -85,7 +85,7 @@ EXERCISES = [
 ]
 
 EXERCISES.each do |ex_hash|
-	ex = @workout.exercises.build(ex_hash)q
+	ex = @workout.exercises.build(ex_hash)
 end 
 
 @workout.save

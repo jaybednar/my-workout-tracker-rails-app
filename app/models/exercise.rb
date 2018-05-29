@@ -3,8 +3,8 @@ class Exercise < ApplicationRecord
   
   has_many :users, through: :workouts
 
-  validates :name, presence: true, format: {without: /All/, message: "can't be 'All'" }
-  validates :bodypart, presence: true, format: {without: /All/, message: "can't be 'All'" }
+  validates :name, presence: true
+  validates :bodypart, presence: true
 
 
   def self.filter_by_bodypart(bodypart)
